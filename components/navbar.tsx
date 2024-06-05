@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -8,7 +9,6 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
@@ -18,12 +18,11 @@ import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  HeartFilledIcon,
-  SearchIcon,
-} from "@/components/icons";
+import { HeartFilledIcon, SearchIcon } from "@/components/icons";
+import { useTheme } from "next-themes";
 
 export const Navbar = () => {
+  const { theme } = useTheme();
   const searchInput = (
     <Input
       aria-label="Search"
@@ -31,7 +30,6 @@ export const Navbar = () => {
         inputWrapper: "bg-default-100",
         input: "text-sm",
       }}
-      
       labelPlacement="outside"
       placeholder="레시피 검색하기.."
       startContent={
@@ -42,12 +40,15 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar maxWidth="xl" position="sticky" height={"100px"}>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-           <Image src="/logo.png" alt="Logo" width={50} height={50}/>
-            <p className="font-bold text-inherit">냠냠수첩</p>
+        <NavbarBrand className="">
+          <NextLink className="flex justify-start items-center pt-10" href="/">
+            {theme === "light" ? (
+              <Image src="/logo_light.png" alt="Logo" width={200} height={50} />
+            ) : (
+              <Image src="/logo_dark.png" alt="Logo" width={200} height={50} />
+            )}
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -56,7 +57,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -72,9 +73,8 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-       
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        
+
         <NavbarItem className="hidden md:flex">
           <Button
             isExternal
@@ -107,8 +107,8 @@ export const Navbar = () => {
                   index === 2
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
+                    ? "danger"
+                    : "foreground"
                 }
                 href="#"
                 size="lg"

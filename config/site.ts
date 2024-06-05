@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "냠냠수첩",
+  name: "마이리틀레시피북",
   description: "6조 최종 프로젝트",
   navItems: [
     {
@@ -16,7 +16,6 @@ export const siteConfig = {
       label: "레시피 자랑",
       href: "/community",
     },
-    
   ],
   navMenuItems: [
     {
