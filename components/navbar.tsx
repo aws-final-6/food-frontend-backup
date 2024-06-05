@@ -43,11 +43,11 @@ export const Navbar = () => {
     <NextUINavbar maxWidth="xl" position="sticky" height={"100px"}>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand className="">
-          <NextLink className="flex justify-start items-center pt-10" href="/">
+          <NextLink className="flex justify-start items-center" href="/">
             {theme === "light" ? (
-              <Image src="/logo_light.png" alt="Logo" width={200} height={50} />
+              <Image src="/logo_light.png" alt="Logo" width={120} height={50} />
             ) : (
-              <Image src="/logo_dark.png" alt="Logo" width={200} height={50} />
+              <Image src="/logo_dark.png" alt="Logo" width={120} height={50} />
             )}
           </NextLink>
         </NavbarBrand>
