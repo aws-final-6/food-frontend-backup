@@ -18,7 +18,7 @@ import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { HeartFilledIcon, SearchIcon } from "@/components/icons";
+import { SearchIcon } from "@/components/icons";
 import { useTheme } from "next-themes";
 
 export const Navbar = () => {
@@ -44,11 +44,16 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand className="">
           <NextLink className="flex justify-start items-center pt-10" href="/">
-            {theme === "light" ? (
-              <Image src="/logo_light.png" alt="Logo" width={200} height={50} />
-            ) : (
-              <Image src="/logo_dark.png" alt="Logo" width={200} height={50} />
-            )}
+            <Image
+              src={
+                theme === "light" || theme == null
+                  ? "/logo_light.png"
+                  : "/logo_dark.png"
+              }
+              alt="Logo"
+              width={200}
+              height={50}
+            />
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -57,7 +62,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
+                  "data-[active=true]:text-primary data-[active=true]:font-medium font-gamja text-xl"
                 )}
                 color="foreground"
                 href={item.href}
@@ -77,14 +82,12 @@ export const Navbar = () => {
 
         <NavbarItem className="hidden md:flex">
           <Button
-            isExternal
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
+            href={"/login"}
             variant="flat"
           >
-            구독하기
+            로그인
           </Button>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex gap-2">
