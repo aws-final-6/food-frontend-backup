@@ -14,6 +14,10 @@ module.exports = {
         mono: ["var(--font-geist-mono)"],
         gamja: ["var(--font-gamja)"],
       },
+      colors: {
+        kakao: "#FEE500",
+        naver: "#03C75A",
+      },
     },
   },
   darkMode: "class",
