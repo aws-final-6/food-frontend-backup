@@ -43,7 +43,7 @@ const TodayRecommend = () => {
               height={200}
             />
           </CardBody>
-          <CardFooter className="justify-center">메뉴 보기</CardFooter>
+          <CardFooter className="justify-center">레시피 보기</CardFooter>
         </Card>
       ))}
     </div>
