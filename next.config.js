@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "blogfiles.pstatic.net",
       },
+      {
+        protocol: "https",
+        hostname: "recipe1.ezmember.co.kr",
+      },
     ],
   },
 };
