@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, CardBody, CardHeader, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
+import { Button } from "@nextui-org/button";
+import Link from "next/link";
 
 const sampleData = [
   {
@@ -29,7 +31,7 @@ const TodayRecommend = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
       {sampleData.map((food, i) => (
-        <Card key={i} className="py-4" isPressable>
+        <Card key={i} className="py-4">
           <CardHeader className="pb-0 pt-2 px-4 flex-col">
             <h4 className="font-bold text-large">{food.name}</h4>
             <small className="text-default-500">{food.calories} KCAL</small>
@@ -43,7 +45,13 @@ const TodayRecommend = () => {
               height={200}
             />
           </CardBody>
-          <CardFooter className="justify-center">레시피 보기</CardFooter>
+          <CardFooter className="justify-center">
+            <Link href={`/recipe/${i}`}>
+              <Button className="bg-sub" variant="flat">
+                레시피 보기
+              </Button>
+            </Link>
+          </CardFooter>
         </Card>
       ))}
     </div>
