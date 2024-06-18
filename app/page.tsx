@@ -3,6 +3,7 @@ import { subtitle } from "@/components/primitives";
 import TodayRecommend from "@/components/recommendSection/todayRecommend";
 import SeasonRecommend from "@/components/recommendSection/seasonRecommend";
 import YoutubeRecommend from "@/components/recommendSection/youtubeRecommend";
+import ShortRecommendation from "@/components/recommendSection/shortRecommendation";
 const Home = () => {
   return (
     <main className="flex flex-col items-center justify-center">
@@ -12,6 +13,8 @@ const Home = () => {
       <SeasonRecommend />
       <h1 className={subtitle()}>유튜브 인기 급상승 레시피</h1>
       <YoutubeRecommend />
+      <h1 className={subtitle()}>유튜브 쇼츠 인기 급상승 레시피</h1>
+      <ShortRecommendation />
     </main>
   );
 };

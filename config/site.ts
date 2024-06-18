@@ -1,35 +1,34 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "냠냠수첩",
+  name: "마이리틀레시피북",
   description: "6조 최종 프로젝트",
   navItems: [
     {
-      label: "오늘의 레시피",
-      href: "/today",
+      label: "홈",
+      href: "/",
     },
     {
       label: "냉장고를 부탁해",
       href: "/myrefregirator",
     },
     {
-      label: "레시피 자랑",
-      href: "/community",
+      label: "마이페이지",
+      href: "/mypage",
     },
-    
   ],
   navMenuItems: [
     {
-      label: "오늘의 레시피",
-      href: "/today",
+      label: "홈",
+      href: "/",
     },
     {
       label: "냉장고를 부탁해",
       href: "/myrefregirator",
     },
     {
-      label: "레시피 자랑",
-      href: "/community",
+      label: "마이페이지",
+      href: "/mypage",
     },
   ],
   links: {

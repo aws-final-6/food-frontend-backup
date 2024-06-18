@@ -3,30 +3,29 @@ import { Card, CardBody, CardHeader, CardFooter } from "@nextui-org/card";
 
 const sampleData = [
   {
-    name: "라볶이",
+    name: "애호박 레시피",
     calories: 215,
-    video_url: "https://www.youtube.com/embed/NEFJLTD37jA?si=U2CPIM6llxtkPS7d",
+    video_url: "https://www.youtube.com/embed/JlmTYP-axM8?si=uz5xJRNb_UAQpDwy",
   },
   {
-    name: "오이 간단하게 무쳐먹기",
+    name: "인생 양배추 레시피",
     calories: 215,
-    video_url: "https://www.youtube.com/embed/Nk5v-CcIRhQ?si=8xgQ9LNai3TeWTQD",
+    video_url: "https://www.youtube.com/embed/lAwJnWY8BkU?si=twqFk6_s1j9WrZTT",
   },
   {
-    name: "이런 두부조림은 처음!",
+    name: "라이스 페이퍼 고기만두",
     calories: 500,
-    video_url: "https://www.youtube.com/embed/As8bN8Yr8oQ?si=pQO92f6d5s8pt4bk",
+    video_url: "https://www.youtube.com/embed/mHy5GhYh-3Y?si=uz3r1zXG4F69hVnS",
   },
 ];
 
-const YoutubeRecommend = () => {
+const ShortRecommendation = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {sampleData.map((food, i) => (
         <Card key={i} className="py-4" isPressable>
           <CardHeader className="pb-0 pt-2 px-4 flex-col">
             <h4 className="font-bold text-large">{food.name}</h4>
-            <small className="text-default-500">{food.calories} KCAL</small>
           </CardHeader>
           <CardBody className="overflow-visible py-2 flex items-center">
             <iframe
@@ -47,4 +46,4 @@ const YoutubeRecommend = () => {
   );
 };
 
-export default YoutubeRecommend;
+export default ShortRecommendation;
