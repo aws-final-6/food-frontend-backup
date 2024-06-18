@@ -5,30 +5,30 @@ export const siteConfig = {
   description: "6조 최종 프로젝트",
   navItems: [
     {
-      label: "오늘의 레시피",
-      href: "/today",
+      label: "홈",
+      href: "/",
     },
     {
       label: "냉장고를 부탁해",
       href: "/myrefregirator",
     },
     {
-      label: "레시피 자랑",
-      href: "/community",
+      label: "마이페이지",
+      href: "/mypage",
     },
   ],
   navMenuItems: [
     {
-      label: "오늘의 레시피",
-      href: "/today",
+      label: "홈",
+      href: "/",
     },
     {
       label: "냉장고를 부탁해",
       href: "/myrefregirator",
     },
     {
-      label: "레시피 자랑",
-      href: "/community",
+      label: "마이페이지",
+      href: "/mypage",
     },
   ],
   links: {
