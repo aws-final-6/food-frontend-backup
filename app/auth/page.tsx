@@ -2,7 +2,7 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 
-const page = () => {
+const AuthPage = () => {
   const searchParams = useSearchParams();
   const user_id = searchParams.get("user_id");
   const access_token = searchParams.get("access_token");
@@ -18,4 +18,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AuthPage;
