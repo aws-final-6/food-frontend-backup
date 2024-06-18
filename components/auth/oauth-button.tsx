@@ -5,9 +5,18 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { KakaoLogo, NaverLogo, GoogleLogo } from "../icons";
+import { LoginAPI } from "./action";
+import { useRouter } from "next/navigation";
 
 const OauthButton = () => {
   const { theme } = useTheme();
+  const router = useRouter();
+  async function handleLoginButton(provider: string) {
+    console.log(provider);
+    const data = await LoginAPI(provider);
+    console.log(data);
+    router.push(data);
+  }
   return (
     <Card>
       <CardBody className="p-10 flex flex-col gap-5">
@@ -25,6 +34,7 @@ const OauthButton = () => {
           variant="shadow"
           className="bg-kakao"
           startContent={<KakaoLogo className="w-5" />}
+          onClick={() => handleLoginButton("kakao")}
         >
           카카오로 로그인
         </Button>
@@ -32,6 +42,7 @@ const OauthButton = () => {
           variant="shadow"
           className="bg-naver text-white"
           startContent={<NaverLogo />}
+          onClick={() => handleLoginButton("naver")}
         >
           네이버로 로그인
         </Button>
@@ -39,6 +50,7 @@ const OauthButton = () => {
           variant="shadow"
           className=" bg-slate-100"
           startContent={<GoogleLogo />}
+          onClick={() => handleLoginButton("google")}
         >
           구글로 로그인
         </Button>
