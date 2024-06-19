@@ -31,6 +31,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
       run: |
         git clone https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/aws-final-6/GitOps_Repo.git
+        cd GitOps_Repo
         
     - name: Install yq without sudo
       run: |
@@ -39,7 +40,7 @@ jobs:
     
     - name: Update deployment.yaml with new image
       run: |
-        ~/yq -i '.spec.template.spec.containers[0].image = "192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}"' .deployment.yaml
+        ~/yq -i '.spec.template.spec.containers[0].image = "192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}"' deployment.yaml
       
     - name: Configure git email
       run: |
