@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
@@ -7,14 +7,17 @@ import { useTheme } from "next-themes";
 import { KakaoLogo, NaverLogo, GoogleLogo } from "../icons";
 import { LoginAPI } from "./action";
 import { useRouter } from "next/navigation";
+import { UserContext } from "@/app/providers";
 
 const OauthButton = () => {
   const { theme } = useTheme();
   const router = useRouter();
+  const { updateProvider } = useContext(UserContext);
   async function handleLoginButton(provider: string) {
+    updateProvider(provider);
     console.log(provider);
     const data = await LoginAPI(provider);
-    console.log(data);
+
     router.push(data);
   }
   return (
