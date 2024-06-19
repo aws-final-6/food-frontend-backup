@@ -36,6 +36,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "recipe1.ezmember.co.kr",
       },
+      {
+        protocol: "https",
+        hostname: "www.foodnuri.go.kr",
+      },
     ],
   },
 };
