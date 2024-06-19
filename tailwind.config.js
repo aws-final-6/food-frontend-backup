@@ -21,6 +21,8 @@ module.exports = {
         main: "#FC9F6D",
         sub: "#FFD163",
         subdark: "#4F4B4A",
+        selectedmain: "#e7673e",
+        selectedsub: "#e6a045",
       },
     },
   },
