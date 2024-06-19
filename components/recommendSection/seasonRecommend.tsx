@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import React from "react";
 import { Card, CardBody, CardHeader, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
@@ -9,8 +11,16 @@ interface ISeason {
   seasonal_name: string;
   seasonal_image_url: string;
 }
-const SeasonRecommend = async () => {
-  const data = await getSeasonal();
+const SeasonRecommend = () => {
+  const [data, setData] = useState<ISeason[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getSeasonal();
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
       {data.map((food: ISeason, i: number) => (

@@ -3,7 +3,6 @@ import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import Image from "next/image";
 import { subtitle } from "@/components/primitives";
 import { Chip } from "@nextui-org/chip";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { getRecipe } from "./action";
 
 interface IIngredient {
@@ -16,7 +15,7 @@ interface IInstruction {
   image: string;
 }
 
-const RecipePage = async ({ params }: Params) => {
+const RecipePage = async ({ params }: { params: { id: number } }) => {
   const recipe_id = params.id;
   const data = await getRecipe(recipe_id);
 

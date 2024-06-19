@@ -1,6 +1,5 @@
 import React from "react";
 import { SearchRecipeAPI } from "@/components/navbar/action";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
@@ -12,7 +11,7 @@ interface IMeta {
   recipe_title: string;
   recipe_thumbnail: string;
 }
-const page = async ({ params }: Params) => {
+const page = async ({ params }: { params: { slug: string } }) => {
   const keyword = decodeURIComponent(params.slug);
   const data = await SearchRecipeAPI(keyword);
   //   console.log(data);
