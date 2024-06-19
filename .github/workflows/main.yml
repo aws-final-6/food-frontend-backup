@@ -39,7 +39,7 @@ jobs:
     
     - name: Update deployment.yaml with new image
       run: |
-        ~/yq -i '.spec.template.spec.containers[0].image = "192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}"' deployment.yaml
+        ~/yq -i '.spec.template.spec.containers[0].image = "192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}"' .deployment.yaml
       
     - name: Configure git email
       run: |
