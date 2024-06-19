@@ -56,7 +56,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
       run: |
+        tree
         cd GitOps_Repo
+        tree
         echo "cd gitops-repo"
         git status
         git add deployment.yaml
