@@ -16,7 +16,7 @@ const SeasonRecommend = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getSeasonal();
-      setData(data);
+      setData(result);
     };
     fetchData();
   }, []);

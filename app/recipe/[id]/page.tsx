@@ -18,6 +18,7 @@ interface IInstruction {
 const RecipePage = async ({ params }: { params: { id: number } }) => {
   const recipe_id = params.id;
   const data = await getRecipe(recipe_id);
+  console.log(data);
 
   return (
     <div>
