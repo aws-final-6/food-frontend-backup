@@ -8,37 +8,33 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
+import React, { useState, useContext, useEffect } from "react";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
+import { UserContext } from "@/app/providers";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { SearchIcon } from "@/components/icons";
 import { useTheme } from "next-themes";
 import Searchbar from "./navbar/Searchbar";
 
 export const Navbar = () => {
   const { theme } = useTheme();
-  // const searchInput = (
-  //   <Input
-  //     aria-label="Search"
-  //     classNames={{
-  //       inputWrapper: "bg-default-100",
-  //       input: "text-sm",
-  //     }}
-  //     labelPlacement="outside"
-  //     placeholder="레시피 검색하기.."
-  //     startContent={
-  //       <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-  //     }
-  //     type="search"
-  //   />
-  // );
+  const { isUserDataEmpty } = useContext(UserContext);
+  const [navWebMenu, setNavWebMenu] = useState(siteConfig.webbasicItems);
+  const [navMobileMenu, setNavMobileMenu] = useState(
+    siteConfig.mobilebasicItems
+  );
+  useEffect(() => {
+    if (!isUserDataEmpty()) {
+      setNavWebMenu(siteConfig.webuserItems);
+      setNavMobileMenu(siteConfig.mobileuserItems);
+    }
+  }, []);
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky" height={"100px"}>
@@ -58,7 +54,7 @@ export const Navbar = () => {
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-12 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {navWebMenu.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
@@ -84,14 +80,25 @@ export const Navbar = () => {
         </NavbarItem>
 
         <NavbarItem className="hidden md:flex">
-          <Button
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={"/login"}
-            variant="flat"
-          >
-            로그인
-          </Button>
+          {isUserDataEmpty() ? (
+            <Button
+              as={Link}
+              className="text-sm font-normal text-default-600 bg-default-100"
+              href={"/login"}
+              variant="flat"
+            >
+              로그인
+            </Button>
+          ) : (
+            <Button
+              as={Link}
+              className="text-sm font-normal text-default-600 bg-default-100"
+              href={"/login"}
+              variant="flat"
+            >
+              로그아웃
+            </Button>
+          )}
         </NavbarItem>
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
@@ -106,13 +113,13 @@ export const Navbar = () => {
       <NavbarMenu>
         <Searchbar />
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
+          {navMobileMenu.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
                   index === 2
                     ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
+                    : index === navMobileMenu.length - 1
                     ? "danger"
                     : "foreground"
                 }

@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "마이리틀레시피북",
   description: "6조 최종 프로젝트",
-  navItems: [
+  webuserItems: [
     {
       label: "홈",
       href: "/",
@@ -17,7 +17,13 @@ export const siteConfig = {
       href: "/mypage",
     },
   ],
-  navMenuItems: [
+  webbasicItems: [
+    {
+      label: "홈",
+      href: "/",
+    },
+  ],
+  mobileuserItems: [
     {
       label: "홈",
       href: "/",
@@ -29,6 +35,20 @@ export const siteConfig = {
     {
       label: "마이페이지",
       href: "/mypage",
+    },
+    {
+      label: "로그아웃",
+      href: "/logout",
+    },
+  ],
+  mobilebasicItems: [
+    {
+      label: "홈",
+      href: "/",
+    },
+    {
+      label: "로그인",
+      href: "/login",
     },
   ],
   links: {
