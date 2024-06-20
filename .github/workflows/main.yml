@@ -71,8 +71,10 @@ jobs:
       uses: 8398a7/action-slack@v3
       with:
         status: ${{ job.status }}
-        author_name: Build MLR Frontend # default: 8398a7@action-slack
+        author_name: Build MLR Frontend
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        github_token: ${{ secrets.TOKEN_GITHUB }}
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-      if: always() # Pick up events even if the job fails or is canceled.
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+      if: always()
