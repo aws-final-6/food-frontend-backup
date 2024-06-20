@@ -66,3 +66,13 @@ jobs:
         git commit -m "Update image to 192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}"
         echo "git commit"
         git push https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/aws-final-6/GitOps_Repo.git
+
+    - name: action-slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Build MLR Frontend # default: 8398a7@action-slack
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always() # Pick up events even if the job fails or is canceled.
