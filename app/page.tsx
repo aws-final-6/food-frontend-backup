@@ -7,7 +7,7 @@ import ShortRecommendation from "@/components/recommendSection/shortRecommendati
 const Home = () => {
   return (
     <main className="flex flex-col items-center justify-center">
-      <h1 className={subtitle()}>오늘의 레시피</h1>
+      <h1 className={subtitle()}>추천 레시피</h1>
       <TodayRecommend />
       <h1 className={subtitle()}>6월 제철 레시피</h1>
       <SeasonRecommend />
