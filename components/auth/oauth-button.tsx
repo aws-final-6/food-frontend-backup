@@ -46,6 +46,7 @@ const OauthButton = () => {
           className="bg-naver text-white"
           startContent={<NaverLogo />}
           onClick={() => handleLoginButton("naver")}
+          isDisabled
         >
           네이버로 로그인
         </Button>
@@ -54,6 +55,7 @@ const OauthButton = () => {
           className=" bg-slate-100"
           startContent={<GoogleLogo />}
           onClick={() => handleLoginButton("google")}
+          isDisabled
         >
           구글로 로그인
         </Button>
