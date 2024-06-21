@@ -1,5 +1,5 @@
 "use server";
-
+import { getRandomItems } from "@/utils/RandomGen";
 const API_URL = process.env.API_URL;
 
 export async function getSeasonal() {
@@ -11,7 +11,7 @@ export async function getSeasonal() {
 
   const seasonalList = await res.json();
 
-  return seasonalList.seasonal_list.slice(0, 4);
+  return getRandomItems(seasonalList.seasonal_list, 4);
 }
 
 export async function getPrefered(userid: string) {
@@ -30,7 +30,7 @@ export async function getPrefered(userid: string) {
 
     const responseData = await response.json();
 
-    return responseData.prefer_list.slice(0, 4);
+    return getRandomItems(responseData.prefer_list, 4);
   } catch (error) {
     console.error("Error:", error);
     return "로그인 실패 했습니다.";
