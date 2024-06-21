@@ -38,7 +38,7 @@ export const siteConfig = {
     },
     {
       label: "로그아웃",
-      href: "/logout",
+      href: "/",
     },
   ],
   mobilebasicItems: [
