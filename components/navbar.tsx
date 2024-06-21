@@ -21,10 +21,11 @@ import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { useTheme } from "next-themes";
 import Searchbar from "./navbar/Searchbar";
+import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const { theme } = useTheme();
-  const { isUserDataEmpty } = useContext(UserContext);
+  const { isUserDataEmpty, clearUserData } = useContext(UserContext);
   const [navWebMenu, setNavWebMenu] = useState(siteConfig.webbasicItems);
   const [navMobileMenu, setNavMobileMenu] = useState(
     siteConfig.mobilebasicItems
@@ -35,6 +36,10 @@ export const Navbar = () => {
       setNavMobileMenu(siteConfig.mobileuserItems);
     }
   }, []);
+
+  function handleLogout() {
+    clearUserData();
+  }
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky" height={"100px"}>
@@ -93,8 +98,9 @@ export const Navbar = () => {
             <Button
               as={Link}
               className="text-sm font-normal text-default-600 bg-default-100"
-              href={"/login"}
+              href={"/"}
               variant="flat"
+              onClick={handleLogout}
             >
               로그아웃
             </Button>
@@ -123,7 +129,7 @@ export const Navbar = () => {
                     ? "danger"
                     : "foreground"
                 }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label}
