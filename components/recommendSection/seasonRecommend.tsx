@@ -38,11 +38,9 @@ const SeasonRecommend = () => {
             />
           </CardBody>
           <CardFooter className="justify-center">
-            <Button className="bg-sub">
-              <Link href={`/search/ingredient/${food.seasonal_name}`}>
-                레시피 보기
-              </Link>
-            </Button>
+            <Link href={`/search/ingredient/${food.seasonal_name}`}>
+              <Button className="bg-sub">레시피 보기</Button>
+            </Link>
           </CardFooter>
         </Card>
       ))}
