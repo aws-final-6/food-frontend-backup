@@ -13,7 +13,7 @@ interface IPrefer {
   recipe_thumbnail: string;
 }
 const TodayRecommend = () => {
-  const { userData } = useContext(UserContext);
+  const { userData, isUserDataEmpty } = useContext(UserContext);
   const [data, setData] = useState<IPrefer[]>([]);
 
   useEffect(() => {
@@ -21,10 +21,18 @@ const TodayRecommend = () => {
       const result = await getPrefered(userData[0].id);
       setData(result);
     };
-    fetchData();
+    if (!isUserDataEmpty()) {
+      fetchData();
+    }
   }, [userData]);
 
-  if (!data) return <div>Loading...</div>;
+  if (data.length == 0)
+    return (
+      <div className="flex flex-col gap-3">
+        <p>오늘의 요리를 보시려면 로그인해주세요!</p>
+        <Button className="bg-sub">로그인</Button>
+      </div>
+    );
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
