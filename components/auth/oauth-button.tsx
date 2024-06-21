@@ -15,7 +15,7 @@ const OauthButton = () => {
   const { updateProvider } = useContext(UserContext);
   async function handleLoginButton(provider: string) {
     updateProvider(provider);
-    console.log(provider);
+    //console.log(provider);
     const data = await LoginAPI(provider);
 
     router.push(data);

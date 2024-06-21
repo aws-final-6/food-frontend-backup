@@ -85,7 +85,7 @@ export default function MyPage() {
     formdata.append("id", userData[0].id);
     formdata.append("provider", userData[0].provider);
     const data = await UpdateMypage(formdata);
-    console.log(data);
+    //console.log(data);
     if (data === 200) alert("프로필이 업데이트 되었습니다");
   }
 

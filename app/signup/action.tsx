@@ -15,7 +15,7 @@ export async function SignupAPI(formData: FormData) {
       },
     ],
   };
-  console.log(userInfo);
+  //console.log(userInfo);
   try {
     const response = await fetch(`${API_URL}/auth/signup`, {
       method: "POST",
@@ -26,7 +26,7 @@ export async function SignupAPI(formData: FormData) {
     });
 
     const responseData = await response.status;
-    console.log(responseData);
+    //console.log(responseData);
     return responseData;
   } catch (error) {
     console.error("Error:", error);
