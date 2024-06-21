@@ -6,7 +6,7 @@ export async function SearchRecipeAPI(keyword: string) {
   const recipeName = {
     keyword: keyword,
   };
-  console.log(recipeName);
+  //console.log(recipeName);
 
   try {
     const response = await fetch(`${API_URL}/search/getTitleSearchList`, {
