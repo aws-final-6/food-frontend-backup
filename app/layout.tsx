@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { UIProvider, UserProvider } from "./providers";
 
 import { siteConfig } from "@/config/site";
-import { fontSans, fontGamja, fontJua } from "@/config/fonts";
+import { fontSans, fontGamja, fontJua, fontGaegu } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
@@ -40,7 +40,8 @@ export default function RootLayout({
           "min-h-screen bg-background antialiased",
           fontSans.variable,
           fontGamja.variable,
-          fontJua.variable
+          fontJua.variable,
+          fontGaegu.variable
         )}
       >
         <UIProvider themeProps={{ attribute: "class", defaultTheme: "light" }}>

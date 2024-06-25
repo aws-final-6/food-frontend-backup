@@ -14,6 +14,7 @@ module.exports = {
         mono: ["var(--font-geist-mono)"],
         gamja: ["var(--font-gamja)"],
         jua: ["var(--font-jua)"],
+        gaegu: ["var(--font-gaegu)"],
       },
       colors: {
         kakao: "#FEE500",

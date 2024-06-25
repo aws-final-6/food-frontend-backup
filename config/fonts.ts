@@ -3,6 +3,7 @@ import {
   Inter as FontSans,
   Gamja_Flower as FontGamja,
   Jua as FontJua,
+  Gaegu as FontGaegu,
 } from "next/font/google";
 
 export const fontSans = FontSans({
@@ -25,4 +26,10 @@ export const fontJua = FontJua({
   subsets: ["latin"],
   variable: "--font-jua",
   weight: "400",
+});
+
+export const fontGaegu = FontGaegu({
+  subsets: ["latin"],
+  variable: "--font-gaegu",
+  weight: "300",
 });
