@@ -105,6 +105,7 @@ const Searchbar = () => {
           >
             <ListboxSection
               title={searchType ? "레시피 이름" : "재료"}
+              classNames={{ heading: "text-lg" }}
               showDivider
             >
               {results.map((result) => (
