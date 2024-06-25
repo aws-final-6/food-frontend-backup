@@ -1,4 +1,3 @@
-import FloatingButton from "@/components/button/FloatingButton";
 import { title } from "@/components/primitives";
 export default function MyRefreigratorLayout({
   children,
@@ -6,16 +5,11 @@ export default function MyRefreigratorLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex flex-col gap-10">
       <div>
-        <p className={title()}>
-          서비스 준비 중입니다! 2024년 6월 24일부터 제공될 예정입니다
-        </p>
+        <p className={title()}>마이 리틀 냉장고</p>
       </div>
-      <div className="w-full grid sm:grid-cols-2 gap-3 grid-cols-1">
-        {children}
-      </div>
-      <FloatingButton />
-    </>
+      <div>{children}</div>
+    </div>
   );
 }
