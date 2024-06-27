@@ -19,6 +19,7 @@ interface UserData {
   provider: string;
   refreshToken: string;
   accessToken: string;
+  favorite: number[];
 }
 
 interface UserContextType {
@@ -28,6 +29,8 @@ interface UserContextType {
   isUserDataEmpty: () => boolean;
   updateProvider: (newProvider: string) => void;
   updateUserData: (newData: Partial<UserData>) => void;
+  addFavorite: (item: number) => void;
+  removeFavorite: (item: number) => void;
 }
 
 export interface ProvidersProps {
@@ -42,6 +45,8 @@ export const UserContext = createContext<UserContextType>({
   clearUserData: () => [],
   updateProvider: () => [],
   updateUserData: () => [],
+  addFavorite: () => [],
+  removeFavorite: () => [],
 });
 
 interface UserProviderProps {
@@ -93,6 +98,26 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   };
 
+  const addFavorite = (item: number) => {
+    if (userData.length > 0) {
+      const updatedData = [...userData];
+      if (!Array.isArray(updatedData[0].favorite)) {
+        updatedData[0].favorite = []; // Initialize favorite if it's not an array
+      }
+      updatedData[0].favorite.push(item);
+      setUserData(updatedData);
+    }
+  };
+  const removeFavorite = (item: number) => {
+    if (userData.length > 0) {
+      const updatedData = [...userData];
+      updatedData[0].favorite = updatedData[0].favorite.filter(
+        (fav) => fav !== item
+      );
+      setUserData(updatedData);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -102,6 +127,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         clearUserData,
         updateProvider,
         updateUserData,
+        removeFavorite,
+        addFavorite,
       }}
     >
       {isInitialized ? children : null}
