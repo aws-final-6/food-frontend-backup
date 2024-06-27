@@ -1,12 +1,12 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { SearchIngredientAPI } from "@/components/navbar/action";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { subtitle } from "@/components/primitives";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import FavoriteButton from "@/components/button/FavoriteButton";
+import RecipeButton from "@/components/button/RecipeButton";
 
 interface IMeta {
   recipe_no: number;
@@ -17,7 +17,6 @@ interface IMeta {
 const page = async ({ params }: { params: { slug: string } }) => {
   const keyword = decodeURIComponent(params.slug);
   const data = await SearchIngredientAPI(keyword);
-  const [star, setStar] = useState(false);
   //console.log(data);
   return (
     <>
@@ -38,21 +37,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                   height={200}
                 />
               </CardBody>
-              <CardFooter className="justify-center">
-                <Link href={`/recipe/${food.recipe_no}`}>
-                  <Button className="bg-sub">레시피 보기</Button>
-                </Link>
-                <Button
-                  variant="bordered"
-                  isIconOnly
-                  color="warning"
-                  onClick={() => {
-                    setStar(!star);
-                  }}
-                >
-                  {star ? <FaStar /> : <FaRegStar />}
-                </Button>
-              </CardFooter>
+              <RecipeButton recipe_no={food.recipe_no} />
             </Card>
           ))}
         </div>
