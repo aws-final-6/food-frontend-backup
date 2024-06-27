@@ -40,7 +40,6 @@ const YoutubeRecommend = () => {
               allowFullScreen
             ></iframe>
           </CardBody>
-          <CardFooter className="justify-center">레시피 보기</CardFooter>
         </Card>
       ))}
     </div>

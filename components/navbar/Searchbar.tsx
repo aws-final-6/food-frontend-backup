@@ -9,6 +9,7 @@ import { FaShoppingBag } from "react-icons/fa";
 import { SearchIngredientAPI, SearchRecipeAPI } from "./action";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
+import FilterButton from "./FilterButton";
 
 interface SearchResult {
   recipe_no: number;
@@ -77,23 +78,22 @@ const Searchbar = () => {
         startContent={
           <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
         }
-        endContent={
-          <Button
-            onClick={() => {
-              searchType
-                ? router.push(`/search/recipe/${searchTerm}`)
-                : router.push(`/search/ingredient/${searchTerm}`);
-              setSearchTerm("");
-              setResults([]);
-            }}
-          >
-            검색
-          </Button>
-        }
         type="search"
         onChange={handleSearch}
         value={searchTerm}
       />
+      <Button
+        onClick={() => {
+          searchType
+            ? router.push(`/search/recipe/${searchTerm}`)
+            : router.push(`/search/ingredient/${searchTerm}`);
+          setSearchTerm("");
+          setResults([]);
+        }}
+      >
+        검색
+      </Button>
+      <FilterButton />
 
       {results && results.length > 0 && (
         <div className="absolute z-10 w-[300px] bg-white shadow-lg mt-10 ml-12 rounded-lg border-2 border-subdark">

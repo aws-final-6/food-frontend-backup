@@ -6,8 +6,8 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { getPrefered } from "./action";
 import { UserContext } from "@/app/providers";
-import { FaRegStar, FaStar } from "react-icons/fa";
-
+import FavoriteButton from "../button/FavoriteButton";
+import RecipeButton from "../button/RecipeButton";
 interface IPrefer {
   recipe_no: number;
   recipe_title: string;
@@ -16,7 +16,6 @@ interface IPrefer {
 const TodayRecommend = () => {
   const { userData, isUserDataEmpty } = useContext(UserContext);
   const [data, setData] = useState<IPrefer[]>([]);
-  const [star, setStar] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +25,7 @@ const TodayRecommend = () => {
     if (!isUserDataEmpty()) {
       fetchData();
     }
-  }, [userData]);
+  }, []);
 
   if (data.length == 0)
     return (
@@ -52,26 +51,7 @@ const TodayRecommend = () => {
               height={200}
             />
           </CardBody>
-          <CardFooter className="justify-center flex flex-row gap-5">
-            <Link href={`/recipe/${food.recipe_no}`}>
-              <Button className="bg-sub" variant="flat">
-                레시피 보기
-              </Button>
-            </Link>
-            {/* <Button variant="bordered" startContent={<FaRegStar />}>
-              즐겨찾기
-            </Button> */}
-            <Button
-              variant="bordered"
-              isIconOnly
-              color="warning"
-              onClick={() => {
-                setStar(!star);
-              }}
-            >
-              {star ? <FaStar /> : <FaRegStar />}
-            </Button>
-          </CardFooter>
+          <RecipeButton recipe_no={food.recipe_no} />
         </Card>
       ))}
     </div>

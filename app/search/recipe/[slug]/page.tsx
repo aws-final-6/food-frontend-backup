@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { subtitle } from "@/components/primitives";
+import FavoriteButton from "@/components/button/FavoriteButton";
+import RecipeButton from "@/components/button/RecipeButton";
 
 interface IMeta {
   recipe_no: number;
@@ -33,11 +35,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                 height={200}
               />
             </CardBody>
-            <CardFooter className="justify-center">
-              <Link href={`/recipe/${food.recipe_no}`}>
-                <Button className="bg-sub">레시피 보기</Button>
-              </Link>
-            </CardFooter>
+            <RecipeButton recipe_no={food.recipe_no} />
           </Card>
         ))}
       </div>

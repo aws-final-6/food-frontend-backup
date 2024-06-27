@@ -7,6 +7,7 @@ import { MyPageAPI, UpdateMypage } from "./action";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { UserContext } from "../providers";
 import clsx from "clsx";
+import Bookmark from "@/components/mypage/Bookmark";
 
 const tag_one = [
   { id: 63, label: "밑반찬" },
@@ -54,6 +55,7 @@ interface IUser {
       situ_no: number;
     }
   ];
+  user_searchfilter: string[];
 }
 
 export default function MyPage() {
@@ -84,9 +86,9 @@ export default function MyPage() {
     formdata.append("email", userData[0].email);
     formdata.append("id", userData[0].id);
     formdata.append("provider", userData[0].provider);
-    const data = await UpdateMypage(formdata);
+    const res = await UpdateMypage(formdata);
     //console.log(data);
-    if (data === 200) alert("프로필이 업데이트 되었습니다");
+    if (res === 200) alert("프로필이 업데이트 되었습니다");
   }
 
   if (!data) return <div>Loading...</div>;
@@ -147,7 +149,9 @@ export default function MyPage() {
               </div>
             </div>
             <p>즐겨찾기</p>
-            <div>프론트엔드가 주말에 해놓을거래요</div>
+            <Bookmark />
+            <p>재료 필터 </p>
+
             <p>구독</p>
             <div>이건 저희도 아직 고민중</div>
             <Button type="submit">저장</Button>

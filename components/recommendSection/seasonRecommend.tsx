@@ -39,7 +39,7 @@ const SeasonRecommend = () => {
           </CardBody>
           <CardFooter className="justify-center">
             <Link href={`/search/ingredient/${food.seasonal_name}`}>
-              <Button className="bg-sub">레시피 보기</Button>
+              <Button className="bg-main">요리 보기</Button>
             </Link>
           </CardFooter>
         </Card>

@@ -1,16 +1,16 @@
 "use server";
+
 const API_URL = process.env.API_URL;
 
-export async function LoginAPI(provider: string) {
-  const loginInfo = {
-    provider: provider,
+export async function updateBookmark(userId: string, recipeNo: number) {
+  const favoriteInfo = {
+    user_id: userId,
+    recipe_no: recipeNo,
   };
-  console.log(loginInfo);
-
   try {
-    const response = await fetch(`${API_URL}/auth/requestToken`, {
+    const response = await fetch(`${API_URL}/bookmark/updateBookmark`, {
       method: "POST",
-      body: JSON.stringify(loginInfo),
+      body: JSON.stringify(favoriteInfo),
       headers: {
         "Content-Type": "application/json",
       },
@@ -25,22 +25,23 @@ export async function LoginAPI(provider: string) {
   }
 }
 
-export async function getBookmark(userId: string) {
-  const userInfo = {
+export async function removeBookmark(userId: string, recipeNo: number) {
+  const favoriteInfo = {
     user_id: userId,
+    recipe_no: recipeNo,
   };
   try {
-    const response = await fetch(`${API_URL}/bookmark/getBookmark`, {
+    const response = await fetch(`${API_URL}/bookmark/removeBookmark`, {
       method: "POST",
-      body: JSON.stringify(userInfo),
+      body: JSON.stringify(favoriteInfo),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    const responseData = await response.json();
-    console.log(responseData);
-    return responseData.bookmark;
+    const responseData = await response.text();
+    //console.log(responseData);
+    return responseData;
   } catch (error) {
     console.error("Error:", error);
     return "로그인 실패 했습니다.";

@@ -7,7 +7,7 @@ import { UIProvider, UserProvider } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans, fontGamja, fontJua, fontGaegu } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/navbar/navbar";
 
 export const metadata: Metadata = {
   title: {
