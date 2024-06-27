@@ -25,6 +25,10 @@ jobs:
     - name: Push Docker image
       run: |
         docker push 192.168.56.200/mylittlerecipebook/mlr-dev-fe-img:${{ github.run_number }}
+
+    - name: Remove Docker image
+      run: |
+        docker rmi 192.168.56.200/mylittlerecipebook/mlr-dev-be-img-fap:${{ github.run_number }}
          
     - name: Clone GitOps Repo
       env:
