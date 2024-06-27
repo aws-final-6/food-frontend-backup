@@ -20,12 +20,11 @@ import { UserContext } from "@/app/providers";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { useTheme } from "next-themes";
-import Searchbar from "./navbar/Searchbar";
-import { useRouter } from "next/navigation";
+import Searchbar from "./Searchbar";
 
 export const Navbar = () => {
   const { theme } = useTheme();
-  const { isUserDataEmpty, clearUserData } = useContext(UserContext);
+  const { isUserDataEmpty, clearUserData, userData } = useContext(UserContext);
   const [navWebMenu, setNavWebMenu] = useState(siteConfig.webbasicItems);
   const [navMobileMenu, setNavMobileMenu] = useState(
     siteConfig.mobilebasicItems
@@ -38,6 +37,8 @@ export const Navbar = () => {
   }, []);
 
   function handleLogout() {
+    if (userData) {
+    }
     clearUserData();
   }
 
