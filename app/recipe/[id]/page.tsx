@@ -4,6 +4,7 @@ import Image from "next/image";
 import { subtitle } from "@/components/primitives";
 import { Chip } from "@nextui-org/chip";
 import { getRecipe } from "./action";
+import FavoriteButton from "@/components/button/FavoriteButton";
 
 interface IIngredient {
   ingredient: string;
@@ -18,7 +19,6 @@ interface IInstruction {
 const RecipePage = async ({ params }: { params: { id: number } }) => {
   const recipe_id = params.id;
   const data = await getRecipe(recipe_id);
-  //console.log(data);
 
   return (
     <div>
@@ -31,7 +31,12 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
             height={400}
             className="rounded"
           />
+
           <h2 className="font-jua text-3xl">{data.name}</h2>
+          <div className="flex flex-row items-center justify-center gap-3">
+            즐겨찾기 추가
+            <FavoriteButton recipe_no={Number(data.recipe_id)} />
+          </div>
         </CardHeader>
         <CardBody className="flex flex-col justify-center items-center gap-10">
           <div className="w-1/2">
